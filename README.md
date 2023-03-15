@@ -91,6 +91,7 @@ If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype
         end
     end
     end
+</details>
 
 ### Install Container Runtime (containerd) - All VM machines
 
