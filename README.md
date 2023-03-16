@@ -8,14 +8,15 @@
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
 
-**Hyper-V issue**
-**DO NOT** run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...). If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
+#### Hyper-V issue
+
+**Hyper-V** and its component make conliction to third party VM tools so that **DO NOT** run or enable it. If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
  
 - Disable Hyper-V by uncheck in Windows features:
 
 ![disable hyper v](/doc/images/disable%20hyper%20v%20in%20windows%20features.png)
 
-- Run below command in PowerShell with administrator right.
+- Run below command in PowerShell with administrator right then turning off and unplugging the power are better reset your machine.
 
         bcdedit /set hypervisorlaunchtype off
 
@@ -123,16 +124,13 @@ Run this command
     vagrant up
 
 ##### Bootstrap stucking error
-In this step, we may stuck when each machine is bootstrapped.
+In this step, we may stuck when each machine is bootstrapped because of [Hyper-V](#hyper-v-issue).
 
 ![stucking error](/doc/images/stucking%20error.png)
 
-These are some ways to resolve:
 
+If you do all ways in [Hyper-V issue](#hyper-v-issue), press "Enter" button to trigger manual from VM GUI.
 
-- Press "Enter" button to trigger manual in VM GUI.
-
-- Re-install Windows and DO NOT enable **Hyper-V**.
 
 </details>
 
