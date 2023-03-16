@@ -142,6 +142,8 @@ In this **Vagrantfile**, we simply specify:
     <img src="/images/vagrant%20status.png" width=100% height=100%>
 
 
+</details>
+
 ### Install Container Runtime (containerd) - All VM machines
 
 ### Install kubeadm, kubelet and kubectl - All VM machines
