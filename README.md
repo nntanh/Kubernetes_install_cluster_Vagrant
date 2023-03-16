@@ -7,8 +7,18 @@
 - Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
-**Note: DO NOT** run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...). If your host machine enabled **Hyper-V**, please refer [here](#bootstrap-stucking-error) to take out of that **first** and get more information.
+
+**Hyper-V issue**
+**DO NOT** run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...). If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
  
+- Disable Hyper-V by uncheck in Windows features:
+
+![disable hyper v](/doc/images/disable%20hyper%20v%20in%20windows%20features.png)
+
+- Run below command in PowerShell with administrator right.
+
+        bcdedit /set hypervisorlaunchtype off
+
 ## Getting started
 
 ### Provision VM in VirtualBox with Vagrant
@@ -112,19 +122,13 @@ Run this command
 
     vagrant up
 
-##### bootstrap stucking error
+##### Bootstrap stucking error
 In this step, we may stuck when each machine is bootstrapped.
 
 ![stucking error](/doc/images/stucking%20error.png)
 
 These are some ways to resolve:
-- Disable Hyper-V by uncheck in Windows features:
 
-![disable hyper v](/doc/images/disable%20hyper%20v%20in%20windows%20features.png)
-
-- Run below command in PowerShell with administrator right to disable Hyper-V completely.
-
-        bcdedit /set hypervisorlaunchtype off
 
 - Press "Enter" button to trigger manual in VM GUI.
 
