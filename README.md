@@ -131,7 +131,7 @@ In this **Vagrantfile**, we simply specify:
     - Press "Enter" button to trigger manually from VM GUI. 
     - Increase boot_timeout (default is 300s) as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
 
-    <img src="/images/increase%20boot_timeout.png" width=75% height=75%>
+        <img src="/images/increase%20boot_timeout.png" width=65% height=65%>
     
     - Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
 
