@@ -108,18 +108,18 @@ In this **Vagrantfile**, we simply specify:
 - Private networking connectivity: ``node.vm.network``
 - Unique hostname: ``node.vm.hostname``
 - Operating system: ``config.vm.box``
-- System resources: ``vb.memory, vb.cpus``
+- System resources: ``vb.memory``, ``vb.cpus``
 - Open GUI of VM Machine: `vb.gui`
 
-**Vagrantfile** use **Ruby** syntax. Refer [here](https://developer.hashicorp.com/vagrant/docs/vagrantfile) to get more information when modifying **Vagrantfile**.
+**Vagrantfile** uses **Ruby** syntax. Refer [here](https://developer.hashicorp.com/vagrant/docs/vagrantfile) to get more information when modifying **Vagrantfile**.
 
 </details>
 
 <details><summary><b>Provisioning</b></summary>
 
-Run this command
+1. Run this command
 
-    vagrant up
+        vagrant up
 
 ##### Bootstrap stucking error
 In this step, we may stuck when each machine is bootstrapped because of **Hyper-V**.
@@ -132,9 +132,16 @@ If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stuckin
 - Press "Enter" button to trigger manually from VM GUI. 
 - Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
 ![](/images/increase%20boot_timeout.png)
-- Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again
+- Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
 
-</details>
+2. Verify provisioned-VM by command:
+
+        vagrant status
+
+Result:
+
+<img src="/images/vagrant%20status.png" width=100% height=100%>
+
 
 ### Install Container Runtime (containerd) - All VM machines
 
