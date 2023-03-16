@@ -130,7 +130,9 @@ In this **Vagrantfile**, we simply specify:
     If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
     - Press "Enter" button to trigger manually from VM GUI. 
     - Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
+
     ![](/images/increase%20boot_timeout.png)
+    
     - Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
 
 2. Verify provisioned-VM by command:
