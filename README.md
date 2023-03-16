@@ -128,8 +128,11 @@ In this step, we may stuck when each machine is bootstrapped because of **Hyper-
 
 <img src="/images/stucking%20error%202.png" width=50% height=50%>
 
-If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking, press "Enter" button to trigger manually from VM GUI. You can also increase timeout as terminal message but it is not the best practice to solve this issue.
-
+If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
+- Press "Enter" button to trigger manually from VM GUI. 
+- Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
+![](/images/increase%20boot_timeout.png)
+- Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again
 
 </details>
 
