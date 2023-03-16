@@ -7,7 +7,8 @@
 - Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
-**Note:** Do not run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...).
+##### Note: 
+Do not run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...).
 If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype off` command in PowerShell with administration right. This is not sure to disable **Hyper-V** clearly so that the best practice is re-installing Windows or pressing enter button when facing the VM bootstrapping by `vagrant up`.
  
 ## Getting started
@@ -103,6 +104,7 @@ In this **Vagrantfile**, we simply specify:
 - Unique hostname: ``node.vm.hostname``
 - Operating system: ``config.vm.box``
 - System resources: ``vb.memory, vb.cpus``
+- Open GUI of VM Machine: `vb.gui`
 
 **Vagrantfile** use **Ruby** syntax. Refer [here](https://developer.hashicorp.com/vagrant/docs/vagrantfile) to get more information when modifying **Vagrantfile**.
 
@@ -113,6 +115,8 @@ In this **Vagrantfile**, we simply specify:
 Run this command
 
     vagrant up
+
+In this step, we can face an error of bootstrap stucking as [mentioned](#note)
 
 </details>
 
