@@ -25,7 +25,7 @@
 ### Provision VM in VirtualBox with Vagrant
 <details><summary><b>Create Vagrantfile</b></summary>
 
-1. Use as below code:
+Use as below code or [Vagrantfile](./Vagrantfile):
 
 ```
 # -*- mode: ruby -*-
@@ -101,8 +101,6 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
-
-2. Another way, use [Vagrantfile](./Vagrantfile)
 
 In this **Vagrantfile**, we simply specify:
 - Number of virtual machines: ``NUM_MASTER_NODE``, ``NUM_WORKER_NODE``
