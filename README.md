@@ -92,13 +92,15 @@ If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype
     end
     end
 
-In this Vagrantfile, we simply specify:
+In this **Vagrantfile**, we simply specify:
 - Number of virtual machines: ``NUM_MASTER_NODE``, ``NUM_WORKER_NODE``
 - IP address: ``IP_NW``, ``MASTER_IP_START``, ``NODE_IP_START``
 - Private networking connectivity: ``node.vm.network``
 - Unique hostname: ``node.vm.hostname``
 - Operating system: ``config.vm.box``
 - System resources: ``vb.memory, vb.cpus``
+
+**Vagrantfile** use **Ruby** syntax. Refer [here](https://developer.hashicorp.com/vagrant/docs/vagrantfile) to get more information when modifying **Vagrantfile**
 
 </details>
 
