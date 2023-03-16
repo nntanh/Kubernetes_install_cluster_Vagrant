@@ -16,7 +16,7 @@
 
 <img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=50% height=50%>
 
-- Run below command in PowerShell with administrator right then turning off and unplugging the power are better reset your machine.
+- Run below command in PowerShell with administrator right then turning off and unplugging the power then wait for 10s better reset your machine.
 
         bcdedit /set hypervisorlaunchtype off
 
@@ -129,9 +129,9 @@ In this **Vagrantfile**, we simply specify:
 
     If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
     - Press "Enter" button to trigger manually from VM GUI. 
-    - Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
+    - Increase boot_timeout (default is 300s) as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
 
-    ![](/images/increase%20boot_timeout.png)
+    <img src="/images/increase%20boot_timeout.png" width=75% height=75%>
     
     - Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
 
