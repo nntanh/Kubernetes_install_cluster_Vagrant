@@ -121,26 +121,25 @@ In this **Vagrantfile**, we simply specify:
 
         vagrant up
 
-##### Bootstrap stucking error
-In this step, we may stuck when each machine is bootstrapped because of **Hyper-V**.
+    In this step, we may stuck when each machine is bootstrapped because of **Hyper-V**.
 
-![](/images/stucking%20error.png)
+    ![](/images/stucking%20error.png)
 
-<img src="/images/stucking%20error%202.png" width=50% height=50%>
+    <img src="/images/stucking%20error%202.png" width=50% height=50%>
 
-If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
-- Press "Enter" button to trigger manually from VM GUI. 
-- Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
-![](/images/increase%20boot_timeout.png)
-- Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
+    If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
+    - Press "Enter" button to trigger manually from VM GUI. 
+    - Increase boot_timeout as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
+    ![](/images/increase%20boot_timeout.png)
+    - Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
 
 2. Verify provisioned-VM by command:
 
         vagrant status
 
-Result:
+    Result:
 
-<img src="/images/vagrant%20status.png" width=100% height=100%>
+    <img src="/images/vagrant%20status.png" width=100% height=100%>
 
 
 ### Install Container Runtime (containerd) - All VM machines
