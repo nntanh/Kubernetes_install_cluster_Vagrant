@@ -143,6 +143,12 @@ In this **Vagrantfile**, we simply specify:
 
     <img src="/images/vagrant%20status.png" width=100% height=100%>
 
+3. Remote to each nodes via ssh using commands
+
+        vagrant ssh <hostname>
+
+
+**Vagrant** fowards port 22 and generates keypair for `ssh` by itself so that we do not need to define them in `Vagrantfile`. Refer [Vagrant: SSH Sharing](https://developer.hashicorp.com/vagrant/docs/share/ssh) and [Vagrantfile: config.ssh](https://developer.hashicorp.com/vagrant/docs/vagrantfile/ssh_settings) for more information.
 
 </details>
 
