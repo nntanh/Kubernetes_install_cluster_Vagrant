@@ -1,4 +1,4 @@
-# Create Kubernetes cluster with Vagrant
+# Setup new Kubernetes cluster with Vagrant
 **Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
 
 ## Pre-required
