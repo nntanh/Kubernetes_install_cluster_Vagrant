@@ -14,7 +14,7 @@
  
 - Disable Hyper-V by uncheck in Windows features:
 
-<img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=50% height=50%>
+    <img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=50% height=50%>
 
 - Run below command in PowerShell with administrator right then turning off and unplugging the power then wait for 10s better reset your machine.
 
