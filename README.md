@@ -10,7 +10,7 @@
 
 #### Hyper-V issue
 
-**Hyper-V** and its component make conliction to third party VM tools so that **DO NOT** run or enable it. If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
+**Hyper-V** and its component make confliction to third party VM tools (VMWare, VirtualBox ...) so that **DO NOT** run or enable it. If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
  
 - Disable Hyper-V by uncheck in Windows features:
 
@@ -124,12 +124,12 @@ Run this command
     vagrant up
 
 ##### Bootstrap stucking error
-In this step, we may stuck when each machine is bootstrapped because of [Hyper-V](#hyper-v-issue).
+In this step, we may stuck when each machine is bootstrapped because of **Hyper-V**.
 
 ![stucking error](/doc/images/stucking%20error.png)
 
 
-If you do all ways in [Hyper-V issue](#hyper-v-issue), press "Enter" button to trigger manual from VM GUI.
+If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking, press "Enter" button to trigger manually from VM GUI.
 
 
 </details>
