@@ -14,7 +14,7 @@
  
 - Disable Hyper-V by uncheck in Windows features:
 
-![disable hyper v](/images/disable%20hyper%20v%20in%20windows%20features.png)
+<img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=75% height=75%>
 
 - Run below command in PowerShell with administrator right then turning off and unplugging the power are better reset your machine.
 
@@ -126,7 +126,7 @@ In this step, we may stuck when each machine is bootstrapped because of **Hyper-
 
 ![](/images/stucking%20error.png)
 
-![](/images/stucking%20error%202.png)
+<img src="/images/stucking%20error%202.png" width=75% height=75%>
 
 If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking, press "Enter" button to trigger manually from VM GUI. You can also increase timeout as terminal message but it is not the best practice to solve this issue.
 
