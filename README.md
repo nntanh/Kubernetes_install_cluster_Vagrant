@@ -10,10 +10,6 @@
 **Note: DO NOT** run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...). If your host machine enabled **Hyper-V**, please refer [here](#bootstrap-stucking-error) to take out of that **first** and get more information.
  
 ## Getting started
-- [Provision VM in VirtualBox with Vagrant](#provision-vm-in-virtualbox-with-vagrant)
-- [Install Container Runtime (containerd) - All VM machines](#install-container-runtime-containerd---all-vm-machines)
-- [Install kubeadm, kubelet and kubectl - All VM machines](#install-kubeadm-kubelet-and-kubectl---all-vm-machines)
-- [Bootstrap Control Plane and Worker nodes](#bootstrap-control-plane-and-worker-nodes)
 
 ### Provision VM in VirtualBox with Vagrant
 <details><summary><b>Create Vagrantfile</b></summary>
@@ -72,6 +68,7 @@
                     vb.name = "kubemaster"
                     vb.memory = 2048
                     vb.cpus = 2
+                    vb.gui = true
                 end
                 node.vm.hostname = "kubemaster"
                 node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
@@ -86,6 +83,7 @@
                     vb.name = "kubenode0#{i}"
                     vb.memory = 2048
                     vb.cpus = 2
+                    vb.gui = true
                 end
                 node.vm.hostname = "kubenode0#{i}"
                 node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
@@ -115,9 +113,23 @@ Run this command
     vagrant up
 
 ##### bootstrap stucking error
-In this step, we may stuck when each machine is bootstrapped. These are some ways to resolve:
-- Disable Hyper-V by uncheck in Windows features
+In this step, we may stuck when each machine is bootstrapped.
+
+![stucking error](/doc/images/stucking%20error.png)
+
+These are some ways to resolve:
+- Disable Hyper-V by uncheck in Windows features:
+
 ![disable hyper v](/doc/images/disable%20hyper%20v%20in%20windows%20features.png)
+
+- Run below command in PowerShell with administrator right to disable Hyper-V completely.
+
+        bcdedit /set hypervisorlaunchtype off
+
+- Press "Enter" button to trigger manual in VM GUI.
+
+- Re-install Windows and DO NOT enable **Hyper-V**.
+
 </details>
 
 ### Install Container Runtime (containerd) - All VM machines
