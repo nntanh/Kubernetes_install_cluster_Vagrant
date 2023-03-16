@@ -2,13 +2,13 @@
 **Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
 
 ## Pre-required
-- Using **Microsoft Windows 10** or **11**
-- Using **Visual Studio Code** to interact code as well as ``terminal`` or ``bash``.
+- Use **Microsoft Windows 10** or **11**
+- Use **Visual Studio Code** to interact code as well as ``terminal`` or ``bash``.
 - Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
 **Note:** Do not run or install **Hyper-V** and any its component because it conflicts with third party virtualization tools (VMWare, VirtualBox ...).
-If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype off` command in PowerShell with administration right. This is not sure to disable **Hyper-V** clearly so that the best practice is re-installing Windows or pressing enter button when facing the VM bootstrapping by `vagrant up`
+If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype off` command in PowerShell with administration right. This is not sure to disable **Hyper-V** clearly so that the best practice is re-installing Windows or pressing enter button when facing the VM bootstrapping by `vagrant up`.
  
 ## Getting started
 - [Provision VM in VirtualBox with Vagrant](#provision-vm-in-virtualbox-with-vagrant)
@@ -92,8 +92,23 @@ If your host machine enabled **Hyper-V**, run `bcdedit /set hypervisorlaunchtype
     end
     end
 
+In this Vagrantfile, we simply specify:
+- Number of virtual machines: ``NUM_MASTER_NODE``, ``NUM_WORKER_NODE``
+- IP address: ``IP_NW``, ``MASTER_IP_START``, ``NODE_IP_START``
+- Private networking connectivity: ``node.vm.network``
+- Unique hostname: ``node.vm.hostname``
+- Operating system: ``config.vm.box``
+- System resources: ``vb.memory, vb.cpus``
+
 </details>
 
+<details><summary><b>Provisioning</b></summary>
+
+Run this command
+
+    vagrant up
+
+</details>
 
 ### Install Container Runtime (containerd) - All VM machines
 
