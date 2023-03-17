@@ -1,5 +1,16 @@
 # Kubernetes cluster with Vagrant
-This lab will provide definition and concept of Kubernetes cluster, Vagrant's component as well as how to setup a new cluster.
+
+<details><summary><b>Kubernetes</b></summary>
+
+**Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. 
+
+</details>
+
+<details><summary><b>Vagrant</b></summary>
+
+**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
+
+</details>
 
 ## Pre-required
 - Use **Microsoft Windows 10** or **11**
@@ -16,15 +27,13 @@ This lab will provide definition and concept of Kubernetes cluster, Vagrant's co
 
     <img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=50% height=50%>
 
-- Run below command in PowerShell with administrator right then turning off and unplugging the power then wait for 10s better reset your machine.
+- Run below command in PowerShell with administrator right then turn off and unplug the power then wait for 10s better reset your machine.
 
         bcdedit /set hypervisorlaunchtype off
 
 ## Getting started
 
 ### Provision VM in VirtualBox with Vagrant
-
-**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
 
 <details><summary><b>Create Vagrantfile</b></summary>
 
