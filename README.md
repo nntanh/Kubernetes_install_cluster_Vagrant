@@ -24,13 +24,7 @@ This lab will provide definition and concept of Kubernetes cluster, Vagrant's co
 
 ### Provision VM in VirtualBox with Vagrant
 
-<details><summary><b>What is Vagrant?</b></summary>
-
-
 **Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
-
-</details>
-
 
 <details><summary><b>Create Vagrantfile</b></summary>
 
