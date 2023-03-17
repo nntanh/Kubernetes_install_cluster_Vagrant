@@ -1,9 +1,9 @@
-# Setup new Kubernetes cluster with Vagrant
-**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
+# Kubernetes cluster with Vagrant
+This lab will provide definition and concept of Kubernetes cluster, Vagrant's component as well as how to setup a new cluster.
 
 ## Pre-required
 - Use **Microsoft Windows 10** or **11**
-- Use **Visual Studio Code** to interact code as well as ``terminal`` or ``bash``.
+- Use **Visual Studio Code** to interact with code as well as ``terminal`` or ``bash``.
 - Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
@@ -23,6 +23,15 @@
 ## Getting started
 
 ### Provision VM in VirtualBox with Vagrant
+
+<details><summary><b>What is Vagrant?</b></summary>
+
+
+**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
+
+</details>
+
+
 <details><summary><b>Create Vagrantfile</b></summary>
 
 Use as below code or [Vagrantfile](./Vagrantfile):
@@ -121,7 +130,7 @@ In this **Vagrantfile**, we simply specify:
 
         vagrant up
 
-    In this step, we may stuck when each machine is bootstrapped because of **Hyper-V**.
+    In this step, we may stuck when each machine is bootstrapped because of **Hyper-V** or hardware compatibility.
 
     ![](/images/stucking%20error.png)
 
@@ -142,9 +151,9 @@ In this **Vagrantfile**, we simply specify:
 
     Result:
 
-    <img src="/images/vagrant%20status.png" width=100% height=100%>
+    <img src="/images/vagrant%20status.png" width=75% height=75%>
 
-3. Remote to each nodes via ssh using command:
+3. Remote to each node via ssh using command:
 
         vagrant ssh <hostname>
 
@@ -153,7 +162,7 @@ In this **Vagrantfile**, we simply specify:
         vagrant ssh kubemaster
 
         vagrant ssh kubenode01
-        
+
         vagrant ssh kubenode02
 
 
@@ -164,7 +173,7 @@ In this **Vagrantfile**, we simply specify:
 
 ### Install Container Runtime (containerd) - All VM machines
 
-**Container runtime** is a component in **Container system** to manage and run `container`. In addition, 
+**Container runtime** is a component in **Container system** to manage resouces of the host for `container` and run `container`. In addition, 
 
 ### Install kubeadm, kubelet and kubectl - All VM machines
 
