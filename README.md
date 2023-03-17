@@ -109,7 +109,7 @@ In this **Vagrantfile**, we simply specify:
 - Unique hostname: ``node.vm.hostname``
 - Operating system: ``config.vm.box``
 - System resources: ``vb.memory``, ``vb.cpus``
-- Open GUI of VM Machine: `vb.gui`
+- GUI of VM Machine: `vb.gui`
 
 **Vagrantfile** uses **Ruby** syntax. Refer [here](https://developer.hashicorp.com/vagrant/docs/vagrantfile) to get more information when modifying **Vagrantfile**.
 
@@ -129,11 +129,12 @@ In this **Vagrantfile**, we simply specify:
 
     If you do all ways in [Hyper-V issue](#hyper-v-issue) and still get this stucking:
     - Press "Enter" button to trigger manually from VM GUI. 
-    - Increase boot_timeout (default is 300s) as terminal message in `Vagrantfile` but it is not the best practice to solve this issue.
+    - Increase boot_timeout (default is 300s) as terminal message in `Vagrantfile` (This is not the best practice to solve the issue).
 
         <img src="/images/increase%20boot_timeout.png" width=50% height=50%>
     
     - Remove the stucked-machine in **VirtualBox** and its resource in directory *"C:\Users\YourUser\VirtualBox VMs/"* then `vagrant up` again.
+    - Re-install Windows OS (The last choice).
 
 2. Verify provisioned-VM by command:
 
@@ -143,9 +144,18 @@ In this **Vagrantfile**, we simply specify:
 
     <img src="/images/vagrant%20status.png" width=100% height=100%>
 
-3. Remote to each nodes via ssh using commands
+3. Remote to each nodes via ssh using command:
 
         vagrant ssh <hostname>
+
+    Example:
+
+        vagrant ssh kubemaster
+
+        vagrant ssh kubenode01
+        
+        vagrant ssh kubenode02
+
 
 
 **Vagrant** fowards port 22 and generates keypair for `ssh` by itself so that we do not need to define them in `Vagrantfile`. Refer [Vagrant: SSH Sharing](https://developer.hashicorp.com/vagrant/docs/share/ssh) and [Vagrantfile: config.ssh](https://developer.hashicorp.com/vagrant/docs/vagrantfile/ssh_settings) for more information.
@@ -153,6 +163,8 @@ In this **Vagrantfile**, we simply specify:
 </details>
 
 ### Install Container Runtime (containerd) - All VM machines
+
+**Container runtime** is a component in **Container system** to manage and run `container`. In addition, 
 
 ### Install kubeadm, kubelet and kubectl - All VM machines
 
