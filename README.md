@@ -24,6 +24,10 @@
     
     *Example: Your web app needs to have 2 versions. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in a Deployment yaml/yml file.*
 
+    ![](/images/Deployment.png)
+
+    *This file deploy 2 replicas *
+
 ![](/images/Deployment_ReplicaSet_Pod.png)
 
 </details>
