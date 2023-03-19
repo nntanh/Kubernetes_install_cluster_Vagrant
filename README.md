@@ -55,7 +55,7 @@
 
     <img src="/images/disable%20hyper%20v%20in%20windows%20features.png" width=50% height=50%>
 
-- Run below command in PowerShell with administrator right then turn off and unplug the power then wait for 10s better reset your machine.
+- Run below command in PowerShell with administrator right then turn off and unplug the power as well as wait for 10s better than just reset your machine.
 
         bcdedit /set hypervisorlaunchtype off
 
