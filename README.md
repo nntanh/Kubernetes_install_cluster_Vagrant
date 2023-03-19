@@ -1,6 +1,6 @@
 # Kubernetes cluster with Vagrant
 
-<details><summary><b>Kubernetes</b></summary>
+<details><summary><b>What is Kubernetes?</b></summary>
 
 **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
 - **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
@@ -32,7 +32,7 @@
 
 </details>
 
-<details><summary><b>Vagrant</b></summary>
+<details><summary><b>What is Vagrant?</b></summary>
 
 **Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
 
