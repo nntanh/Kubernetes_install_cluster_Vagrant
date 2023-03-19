@@ -15,7 +15,7 @@
     
     *Example: If you want to have and persist 3 pods for your web app you have to define them in yaml/yml file.*
 
-    <img src="/images/ReplicaSet.png" width=50% height=50%>
+    <img src="/images/ReplicaSet.png" width=25% height=25%>
 
     *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet resource.*        
 
