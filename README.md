@@ -36,7 +36,7 @@
 
 <details><summary><b>What is Vagrant?</b></summary>
 
-**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is IaC (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
+**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is **IaC** (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code.
 
 </details>
 
