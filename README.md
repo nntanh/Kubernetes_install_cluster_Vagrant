@@ -65,7 +65,7 @@
 
 <details><summary><b>Create Vagrantfile</b></summary>
 
-Run `vagrant init` or create a file named Vagrantfile.
+Run `vagrant init` or create a file with *Vagrantfile* name.
 
 Use as below code or [Vagrantfile](./Vagrantfile):
 
