@@ -15,32 +15,7 @@
     
     *Example: If you want to have and persist 3 pods for your web app you have to define them in yaml/yml file.*
 
-        apiVersion: apps/v1
-        
-        apiVersion: apps/v1
-        kind: ReplicaSet
-        metadata:
-            name: my-app
-        spec:
-            replicas: 3
-            selector:
-                matchLabels:
-                    app: my-app
-        template:
-            metadata:
-                labels:
-                    app: my-app
-            spec:
-                containers:
-                    - name: my-app-container
-                    image: my-app-image:latest
-                    resources:
-                        requests:
-                        cpu: "100m"
-                        memory: "128Mi"
-                    limits:
-                        cpu: "500m"
-                        memory: "256Mi"
+    ![](/images/ReplicaSet.png)
 
     *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet resource.*        
 
