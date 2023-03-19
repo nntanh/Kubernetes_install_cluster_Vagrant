@@ -3,18 +3,20 @@
 <details><summary><b>Kubernetes</b></summary>
 
 **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
-1. **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
+- **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
 
-2. **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
+- **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
 
-3. **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
+    ![](/images/Deployment_ReplicaSet_Pod.png)
+
+- **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
     
-    ``Example: You want to have 3 pods for your web app. You have to define them in 'yaml/yml' file with ReplicaSet resource.``
+    ``Example: You want to have 3 pods for your web app. You have to define them in yaml/yml file with ReplicaSet resource.``
 
 
-4. **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
+- **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
     
-    ``Example: You want to have 2 versions for your web app. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in Deployment 'yaml/yml' file.``
+    ``Example: You want to have 2 versions for your web app. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in Deployment yaml/yml file.``
 
 
 
