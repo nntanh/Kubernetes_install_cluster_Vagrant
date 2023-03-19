@@ -5,20 +5,44 @@
 **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
 - **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
 
-- **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
+    Worker:
 
-    ![](/images/Deployment_ReplicaSet_Pod.png)
+    Control Plan (Master):
+
+- **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
 
 - **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
     
-    ``Example: You want to have 3 pods for your web app. You have to define them in yaml/yml file with ReplicaSet resource.``
+    *Example: If you want to have 3 pods for your web app you have to define them in yaml/yml file with ReplicaSet resource.*
+
+        apiVersion: apps/v1
+        kind: ReplicaSet
+        metadata:
+        name: nginx-replicaset
+        spec:
+        replicas: 3
+        selector:
+            matchLabels:
+            app: nginx
+        template:
+            metadata:
+            labels:
+                app: nginx
+            spec:
+            containers:
+            - name: nginx
+                image: nginx
+                ports:
+                - containerPort: 80
+
+    *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet concept.*        
 
 
 - **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
     
-    ``Example: You want to have 2 versions for your web app. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in Deployment yaml/yml file.``
+    *Example: Your web app needs to have 2 versions. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in a Deployment yaml/yml file.*
 
-
+![](/images/Deployment_ReplicaSet_Pod.png)
 
 </details>
 
@@ -52,6 +76,8 @@
 ### Provision VM in VirtualBox with Vagrant
 
 <details><summary><b>Create Vagrantfile</b></summary>
+
+Run `vagrant init` or create a file named Vagrantfile.
 
 Use as below code or [Vagrantfile](./Vagrantfile):
 
