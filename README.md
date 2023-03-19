@@ -5,15 +5,15 @@
 **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
 - **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
 
-    Worker:
+    **Worker:**
 
-    Control Plan (Master):
+    **Control Plan (Master):**
 
 - **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
 
 - **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
     
-    *Example: If you want to have 3 pods for your web app you have to define them in yaml/yml file with ReplicaSet resource.*
+    *Example: If you want to have 3 pods for your web app you have to define them in yaml/yml file.*
 
         apiVersion: apps/v1
         kind: ReplicaSet
@@ -35,7 +35,7 @@
                 ports:
                 - containerPort: 80
 
-    *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet concept.*        
+    *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet resource.*        
 
 
 - **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
