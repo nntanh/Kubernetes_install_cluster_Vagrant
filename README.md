@@ -2,7 +2,7 @@
 
 <details><summary><b>What is Kubernetes?</b></summary>
 
-**Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
+    **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
 - **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
 
     **Worker:**
