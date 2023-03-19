@@ -11,29 +11,36 @@
 
 - **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
 
-- **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
+- **ReplicaSet:** This resource is used to manage a specify number of **Pods** are running for some purpose.
     
     *Example: If you want to have and persist 3 pods for your web app you have to define them in yaml/yml file.*
 
         apiVersion: apps/v1
+        
+        apiVersion: apps/v1
         kind: ReplicaSet
         metadata:
-        name: nginx-replicaset
+            name: my-app
         spec:
-        replicas: 3
-        selector:
-            matchLabels:
-            app: nginx
+            replicas: 3
+            selector:
+                matchLabels:
+                    app: my-app
         template:
             metadata:
-            labels:
-                app: nginx
+                labels:
+                    app: my-app
             spec:
-            containers:
-            - name: nginx
-                image: nginx
-                ports:
-                - containerPort: 80
+                containers:
+                    - name: my-app-container
+                    image: my-app-image:latest
+                    resources:
+                        requests:
+                        cpu: "100m"
+                        memory: "128Mi"
+                    limits:
+                        cpu: "500m"
+                        memory: "256Mi"
 
     *This yaml/yml file makes sure your app will always has 3 pods (nginx container) running in the same time with ReplicaSet resource.*        
 
