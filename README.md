@@ -13,7 +13,7 @@
 
 - **ReplicaSet:** This resource is used to create and manage a specify number of **Pods** are running for some purpose.
     
-    *Example: If you want to have 3 pods for your web app you have to define them in yaml/yml file.*
+    *Example: If you want to have and persist 3 pods for your web app you have to define them in yaml/yml file.*
 
         apiVersion: apps/v1
         kind: ReplicaSet
