@@ -17,7 +17,7 @@
 
     <img src="/images/ReplicaSet.png" width=25% height=25%>
 
-    *This yaml/yml file makes sure your nginx app will always has 3 pods running (`replicas: 3`) in the same time with ReplicaSet resource.*        
+    *This yaml/yml file ensures your nginx app will always has 3 pods running (`replicas: 3`) in the same time with ReplicaSet resource.*        
 
 
 - **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
