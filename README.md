@@ -5,11 +5,11 @@
 
 **Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
 
-- **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run.
+- **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run. There are 2 types:
 
-    **Worker:**
+    **Worker Node:**
 
-    **Control Plan (Master):**
+    **Control Plan (Master) Node:**
 
 - **Pod:** A group of containers deployed in the same **Node**. Each pod has a unique IP and shares network as well as storage resources to each other.
 
@@ -19,18 +19,23 @@
 
     <img src="/images/ReplicaSet.png" width=25% height=25%>
 
-    *This yaml/yml file ensures your nginx app will always has 3 pods running (`replicas: 3`) in the same time with ReplicaSet resource.*        
+    *This yaml/yml file ensures your nginx app will always has 3 pods running **"replicas: 3"** in the same time with ReplicaSet resource.*        
 
-
-- **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. 
+- **Deployment:** This resource is used to deploy and manage **Pods** and **ReplicaSets**. It can update and rollback **Pods** via **ReplicaSet**.
     
     *Example: Your web app needs to have 2 versions. 1 is for lastest update and 1 is for backup version to rollback once it has accident. Therefore, you have to define 2 ReplicaSets in a Deployment yaml/yml file.*
 
     <img src="/images/Deployment.png" width=25% height=25%>
 
-    *This file deploy 2 replicas *
+    *In this file, if you want to update app version, you just need to change the image then Kubenetes will create a new ReplicaSet with lastest image version for Pods.*
 
 ![](/images/Deployment_ReplicaSet_Pod.png)
+
+- **StatefulSets** is a controller that is used to manage stability and consistency application. The best pactice is Database.
+
+- **DaemonSets** is used to deploy an application pod to all node in cluster.
+
+    *Example: You want to setup an Prometheus for all node to monitor. DaemonSets will help easily* 
 
 </details>
 
