@@ -52,7 +52,7 @@
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
 
-#### Hyper-V issue
+<details><summary><b>Hyper-V issue</b></summary>
 
 **Hyper-V** and its component make confliction to third party VM tools (VMWare, VirtualBox ...) so that **DO NOT** run or enable it. If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
  
@@ -63,6 +63,8 @@
 - Run below command in PowerShell with administrator right then turn off and unplug the power as well as wait for 10s better than just reset your machine.
 
         bcdedit /set hypervisorlaunchtype off
+
+</details>
 
 ## Getting started
 
