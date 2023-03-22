@@ -193,13 +193,15 @@ In this **Vagrantfile**, we simply specify:
 
 3. Remote to each node via ssh using command:
 
-        vagrant ssh <hostname>
-
-    Example:
+    Kubemaster
 
         vagrant ssh kubemaster
 
+    Kubenode01
+
         vagrant ssh kubenode01
+
+    Kubenode02
 
         vagrant ssh kubenode02
 
@@ -211,7 +213,17 @@ In this **Vagrantfile**, we simply specify:
 
 ### Install Container Runtime (containerd) - All VM machines
 
-**Container runtime** is a component in **Container system** to manage resouces of the host for `container` and run `container`. In addition, 
+**Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: CRI-O, Docker Engine, rkt (Rocket), LXC/LXD ... We will use *containerd* in this lab.
+
+#### Load kernel modules in Linux
+
+    cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+    overlay
+    br_netfilter
+    EOF
+
+    sudo modprobe overlay
+    sudo modprobe br_netfilter
 
 ### Install kubeadm, kubelet and kubectl - All VM machines
 
