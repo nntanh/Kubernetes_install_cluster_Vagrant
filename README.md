@@ -52,7 +52,7 @@
 - Install [Vagrant](https://developer.hashicorp.com/vagrant/downloads)
 
 
-<details><summary><b>Hyper-V issue</b></summary>
+#### Hyper-V issue
 
 **Hyper-V** and its component make confliction to third party VM tools (VMWare, VirtualBox ...) so that **DO NOT** run or enable it. If your host machine enabled **Hyper-V**, refer these ways to disable it completely:
  
@@ -64,7 +64,6 @@
 
         bcdedit /set hypervisorlaunchtype off
 
-</details>
 
 ## Getting started
 
@@ -229,11 +228,13 @@ Run
     sudo modprobe overlay
     sudo modprobe br_netfilter
 
-- Above commands help to define `overlay` and `br_netfilter` kernel module.
+- Above commands help to define `overlay` and `br_netfilter` kernel module into k8s.conf file. `modules-load.d` is a system directory used for configuring the kernel module loading process with `.conf` file that specify the modules will be loaded when system boots up.
 
 - `overlay` module is required when using Docker and Kubenetes because it can create a writeable layer on top of read-only image, allowing multiple containers to share the same image while still maintaining their own file systems.
 
 - `br_netfilter` module that support to filter network packet during the network connection of the Linux kernel. Linux Bridge is a virtual network device that allows multiple physical or virtual network interfaces to be connected to each other to form a single network segment. The br_netfilter module is required to enable the use of iptables rules to filter network packets passing through the bridge. This is very important for containerization technologies like Docker and Kubernetes, as they use network bridges to connect containers to each other and to the outside world.
+
+Verify
 
 </details>
 
