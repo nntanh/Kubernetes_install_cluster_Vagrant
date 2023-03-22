@@ -228,13 +228,36 @@ Run
     sudo modprobe overlay
     sudo modprobe br_netfilter
 
-- Above commands help to define `overlay` and `br_netfilter` kernel module into k8s.conf file. `modules-load.d` is a system directory used for configuring the kernel module loading process with `.conf` file that specify the modules will be loaded when system boots up.
+- Above commands help to define `overlay` and `br_netfilter` kernel module into `k8s.conf` file. `modules-load.d` is a system directory for configuring the kernel module loading process with `.conf` file that specifies the modules will be loaded when system boots up.
 
 - `overlay` module is required when using Docker and Kubenetes because it can create a writeable layer on top of read-only image, allowing multiple containers to share the same image while still maintaining their own file systems.
 
-- `br_netfilter` module that support to filter network packet during the network connection of the Linux kernel. Linux Bridge is a virtual network device that allows multiple physical or virtual network interfaces to be connected to each other to form a single network segment. The br_netfilter module is required to enable the use of iptables rules to filter network packets passing through the bridge. This is very important for containerization technologies like Docker and Kubernetes, as they use network bridges to connect containers to each other and to the outside world.
+- `br_netfilter` module supports to filter network packet during the network connection of the Linux kernel. Linux Bridge is a virtual network device that allows multiple physical or virtual network interfaces to be connected to each other to form a single network segment. The br_netfilter module is required to enable the use of iptables rules to filter network packets passing through the bridge. This is very important for containerization technologies like Docker and Kubernetes, as they use network bridges to connect containers to each other and to the outside world.
 
-Verify
+Verify `overlay` and `br_netfilter` by below commands:
+
+    lsmod | grep overlay
+    lsmod | grep br_netfilter
+
+</details>
+
+<details><summary><b>Setup iptables to handle network packet</b></summary>
+
+Run
+
+    cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+    net.bridge.bridge-nf-call-iptables  = 1
+    net.bridge.bridge-nf-call-ip6tables = 1
+    net.ipv4.ip_forward                 = 1
+    EOF
+
+    sudo sysctl --system
+
+- `net.bridge.bridge-nf-call-iptables  = 1` command enables to allow packets pass through network bridges by iptables. These packets will be sent to the FORWARD chain of iptables for further control.
+
+- `net.ipv4.ip_forward = 1` command enables to foward the packets between different network interfaces and their intended destination address on the system. This is an important feature for implementing complex network solutions such as virtualization or distributed computer networks.
+
+- `sudo sysctl --system` apply above setting without reboot
 
 </details>
 
