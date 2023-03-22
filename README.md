@@ -215,7 +215,9 @@ In this **Vagrantfile**, we simply specify:
 
 **Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: CRI-O, Docker Engine, rkt (Rocket), LXC/LXD ... We will use *containerd* in this lab.
 
-#### Load kernel modules in Linux
+<details><summary><b>Load kernel modules in Linux</b></summary>
+
+Run
 
     cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
     overlay
@@ -224,6 +226,14 @@ In this **Vagrantfile**, we simply specify:
 
     sudo modprobe overlay
     sudo modprobe br_netfilter
+
+- Above commands help to define `overlay` and `br_netfilter` kernel module.
+
+- `overlay` module is required when using Docker and Kubenetes because it can create a writeable layer on top of read-only image, allowing multiple containers to share the same image while still maintaining their own file systems.
+
+- `br_netfilter` module that support to filter network packet during the network connection of the Linux kernel. Linux Bridge is a virtual network device that allows multiple physical or virtual network interfaces to be connected to each other to form a single network segment. The br_netfilter module is required to enable the use of iptables rules to filter network packets passing through the bridge. This is very important for containerization technologies like Docker and Kubernetes, as they use network bridges to connect containers to each other and to the outside world.
+
+</details>
 
 ### Install kubeadm, kubelet and kubectl - All VM machines
 
