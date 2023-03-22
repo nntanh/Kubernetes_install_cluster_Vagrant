@@ -41,7 +41,7 @@
 
 <details><summary><b>What is Vagrant?</b></summary>
 
-**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is **IaC** (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code. Refer [here](https://developer.hashicorp.com/vagrant/intro) to get more information.
+**Vagrant** is a tool to create infrastructure in virtual machine enviroment. It is **IaC** (Infrastructure as Code) on premise system that may help to define and manage virtual machines using code. Refer [Introduction to Vagrant](https://developer.hashicorp.com/vagrant/intro) to get more information.
 
 </details>
 
@@ -234,7 +234,7 @@ Run
 
 - `br_netfilter` module supports to filter network packet during the network connection of the Linux kernel. Linux Bridge is a virtual network device that allows multiple physical or virtual network interfaces to be connected to each other to form a single network segment. The br_netfilter module is required to enable the use of iptables rules to filter network packets passing through the bridge. This is very important for containerization technologies like Docker and Kubernetes, as they use network bridges to connect containers to each other and to the outside world.
 
-Verify `overlay` and `br_netfilter` by below commands:
+Verify command:
 
     lsmod | grep overlay
     lsmod | grep br_netfilter
@@ -258,6 +258,10 @@ Run
 - `net.ipv4.ip_forward = 1` command enables to foward the packets between different network interfaces and their intended destination address on the system. This is an important feature for implementing complex network solutions such as virtualization or distributed computer networks.
 
 - `sudo sysctl --system` apply above setting without reboot
+
+Verify command
+
+    sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 
 </details>
 
