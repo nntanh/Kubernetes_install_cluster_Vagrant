@@ -163,7 +163,7 @@ In this **Vagrantfile**, we simply specify:
 
 </details>
 
-<details><summary><b>Provisioning</b></summary>
+<details><summary><b>Provision Vagrant</b></summary>
 
 1. Run this command
 
