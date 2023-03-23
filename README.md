@@ -214,7 +214,7 @@ In this **Vagrantfile**, we simply specify:
 
 ### Install Container Runtime (containerd) - All VM machines
 
-**Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: CRI-O, Docker Engine, rkt (Rocket), LXC/LXD, K8s ... We will use **containerd** in this lab.
+**Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: *CRI-O*, *Docker Engine*, *containerd*, *rkt (Rocket)*, *LXC/LXD*, *K8s* ... We use *containerd* in this lab.
 
 <details><summary><b>Load kernel modules in Linux</b></summary>
 
@@ -269,7 +269,66 @@ Verify command
 
 In this lab, we use `containerd.io` that does not contain **CNI** plugins (install later when bootstrapping control plane and worker nodes).
 
->CNI (Container Network Interface) has some plugins to support brigde network - iptables such as Flannel, Calico, Weave net (These plugins need to use iptables to config firewall and routing). It is compatible with many different network technologies, allowing integration and expansion of network technologies as needed for each application.
+>CNI (Container Network Interface) has some plugins to support brigde network - iptables such as Flannel, Calico, Weave net (These plugins need to use iptables to config firewall and routing). CNI is compatible with many different network technologies, allowing integration and expansion of network technologies as needed for each application.
+
+Run
+
+    sudo apt-get update
+
+    sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+The above command is used to install necessary packages to ensure security and authentication when using other commands in Ubuntu or Debian-based systems. The packages include:
+
+- ``ca-certificates`` contains necessary public certificates to authenticate connections to online services.
+- ``curl`` a command-line tool to transfer data to or from a server.
+- ``gnupg`` a complete and free implementation of the OpenPGP standard, used for encrypting and signing data.
+- ``lsb-release`` provides information about the version of the distribution being used.
+
+Add Docker’s official GPG key
+
+    sudo mkdir -m 0755 -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+Set up the repository
+
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+Install ``containerd.io``
+
+    sudo apt-get update
+    sudo apt-get install containerd.io
+
+</details>
+
+<details><summary><b>Install cgroup (Control group)</b></summary>
+
+**Cgroup (Control group)** is a feature in the Linux operating system that allows for the management and limitation of system resources such as CPU, memory, I/O, and networking for a specific group of processes. These process groups can be related to an application or containerization systems like Docker or Kubernetes.
+
+When installing **cgroup** for a **Kubernetes (k8s) cluster**, the cluster's resources will be managed and limited by **cgroup** to ensure system performance and stability. However, **K8s** does not require users to actively divide resources for processes because it uses abstract objects such as Pods and Containers to manage resources instead of creating and configuring **cgroups** for each application. Therefore, **K8s** will use **cgroups** to manage and limit resources for these Pods and containers, ensuring that they do not affect other processes running on the same node.
+
+There are 2 **cgroup** driver: **cgroupfs** and **systemd**. In this lab, we have `kubelet` and `containerd` using **systemd**. You can use to check the **cgroup** driver type by command:
+
+    cat /proc/mounts | grep cgroup
+
+Run below command to config ``containerd`` use systemd:
+
+    sudo vi /etc/containerd/config.toml
+
+Replace all with below content:
+
+    [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+
+Restart ``containerd``
+
+    sudo systemctl restart containerd
 
 </details>
 
