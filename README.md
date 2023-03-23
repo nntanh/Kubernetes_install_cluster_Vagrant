@@ -212,7 +212,7 @@ In this **Vagrantfile**, we simply specify:
 
 </details>
 
-### Install Container Runtime (containerd) - All VM machines
+### Install Container Runtime (containerd) - All nodes
 
 **Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: *CRI-O*, *Docker Engine*, *containerd*, *rkt (Rocket)*, *LXC/LXD*, *K8s* ... We use *containerd* in this lab.
 
@@ -334,6 +334,6 @@ Restart ``containerd``
 
 </details>
 
-### Install kubeadm, kubelet and kubectl - All VM machines
+### Install kubeadm, kubelet and kubectl - All nodes
 
 ### Bootstrap Control Plane and Worker nodes
