@@ -3,9 +3,9 @@
 <details><summary><b>What is Kubernetes?</b></summary>
 
 
-**Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container. Below are some basic concepts in Kubernetes:
+**Kubernetes (K8s)** is an open-source platform that is used to deploy and manage container (Container runtime). Below are some basic concepts in Kubernetes:
 
-- **Node:** A server as cloud instance, VM of premise or computer where container can be deployed and run. There are 2 types:
+- **Node** is a server such as cloud instance, VM of premise or computer where container can be deployed and run. There are 2 types:
 
     **Worker Node:**
 
@@ -214,7 +214,7 @@ In this **Vagrantfile**, we simply specify:
 
 ### Install Container Runtime (containerd) - All VM machines
 
-**Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: CRI-O, Docker Engine, rkt (Rocket), LXC/LXD ... We will use *containerd* in this lab.
+**Container runtime** is a software to manage and run container in a system enviroment, it performs tasks such as creating, starting, stopping and deleting containers. There are some types of container runtime: CRI-O, Docker Engine, rkt (Rocket), LXC/LXD, K8s ... We will use **containerd** in this lab.
 
 <details><summary><b>Load kernel modules in Linux</b></summary>
 
@@ -257,11 +257,19 @@ Run
 
 - `net.ipv4.ip_forward = 1` command enables to foward the packets between different network interfaces and their intended destination address on the system. This is an important feature for implementing complex network solutions such as virtualization or distributed computer networks.
 
-- `sudo sysctl --system` apply above setting without reboot
+- `sudo sysctl --system` apply above setting without reboot.
 
 Verify command
 
     sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+
+</details>
+
+<details><summary><b>Install containerd</b></summary>
+
+In this lab, we use `containerd.io` that does not contain **CNI** plugins (install later when bootstrapping control plane and worker nodes).
+
+>CNI (Container Network Interface) has some plugins to support brigde network - iptables such as Flannel, Calico, Weave net (These plugins need to use iptables to config firewall and routing). It is compatible with many different network technologies, allowing integration and expansion of network technologies as needed for each application.
 
 </details>
 
