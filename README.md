@@ -312,7 +312,9 @@ Install ``containerd.io``
 
 When installing **cgroup** for a **Kubernetes (k8s) cluster**, the cluster's resources will be managed and limited by **cgroup** to ensure system performance and stability. However, **K8s** does not require users to actively divide resources for processes because it uses abstract objects such as Pods and Containers to manage resources instead of creating and configuring **cgroups** for each application. Therefore, **K8s** will use **cgroups** to manage and limit resources for these Pods and containers, ensuring that they do not affect other processes running on the same node.
 
-There are 2 **cgroup** driver: **cgroupfs** and **systemd**. In this lab, we have `kubelet` and `containerd` using **systemd**. You can use to check the **cgroup** driver type by command:
+There are 2 **cgroup** drivers: **cgroupfs** and **systemd**. 
+
+In this lab, we have `kubelet` and `containerd` using **systemd**. You can use to check the **cgroup** driver type by command:
 
     cat /proc/mounts | grep cgroup
 
