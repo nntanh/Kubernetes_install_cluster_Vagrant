@@ -336,4 +336,28 @@ Restart ``containerd``
 
 ### Install kubeadm, kubelet and kubectl - All nodes
 
+- **Kubeadm** is a command-line tool for installing and setting up a Kubernetes cluster. Kubeadm provides a standardized way to create and manage a Kubernetes cluster, including installing worker nodes and control plane nodes.
+
+- **Kubelet** is a component on each worker node in a Kubernetes cluster, responsible for managing containers on that node. It works with Kubernetes API servers to synchronize the state of containers and other related objects.
+
+- **Kubectl** is a command-line tool for interacting with the Kubernetes API server. Kubectl allows users to create, modify, and delete objects in the cluster, such as pods, services, deployments, and other objects. Kubectl also provides information about the status of objects in the cluster.
+
+<details><summary><b>Disable swap</b></summary>
+
+**Swap** is a partition on the hard drive of a Linux system used to reduce the use of RAM memory. When the system's RAM is full, swap is used to store data and processes that are currently not being used much to free up RAM memory for other processes.
+
+**Pod** and **container** will run as process in nodes (K8s cluster) and they have to be stability and reliability for application without any impact from another function so that swap should be disabled in K8s.
+
+Run
+
+    # First diasbale swap
+    sudo swapoff -a
+
+    # And then to disable swap on startup in /etc/fstab
+    sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+Install kubeadm, kubelet and kubectl packages
+
+</details>
+
 ### Bootstrap Control Plane and Worker nodes
