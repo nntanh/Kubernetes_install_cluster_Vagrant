@@ -387,3 +387,48 @@ Install `kubelet`, `kubeadm` and `kubectl` then pin their version to avoid auto-
 </details>
 
 ### Bootstrap Control Plane and Worker nodes
+
+<details><summary><b>Init Control Plane (master node)</b></summary>
+
+Run command:
+
+    sudo kubeadm init --apiserver-advertise-address=192.168.56.2 --pod-network-cidr=10.244.0.0/16
+
+- ``--apiserver-advertise-address=192.168.56.2``: Advertise API server of cluster. In this case, we use the same with master node.
+
+- `--pod-network-cidr=10.244.0.0/16`: Create CIDR for pod network. If not, the master node will generate pod CIDR by itself. Do not chose the exist range to avoid confliction.
+
+Success message:
+
+    Your Kubernetes control-plane has initialized successfully!
+
+    To start using your cluster, you need to run the following as a regular user:
+
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+    You should now deploy a Pod network to the cluster.
+    Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+    /docs/concepts/cluster-administration/addons/
+
+    You can now join any number of machines by running the following on each node
+    as root:
+
+    kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+
+Save ``kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>`` to join worker node later.
+
+Make `kubectl` run with **non-root user**.
+
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+If you just want to use **root user** for work, run below command.
+
+    export KUBECONFIG=/etc/kubernetes/admin.conf
+
+
+
+</details>
