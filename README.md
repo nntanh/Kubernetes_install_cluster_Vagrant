@@ -516,6 +516,73 @@ Kubenode output:
     tcp6       0      0 :::10256                :::*                    LISTEN      9208/kube-proxy     
     tcp6       0      0 :::22                   :::*                    LISTEN      1431/sshd
 
+</details>
 
+<details><summary><b>Install Pod network add-on</b></summary>
+
+Run below command to check all system nodes.
+
+    kubectl get nodes
+
+Output:
+
+    NAME           STATUS     ROLES           AGE    VERSION
+    kubemaster     NotReady   control-plane   3h1m   v1.26.2
+    kubenode01     NotReady   <none>          3h     v1.26.2
+    kubenode02     NotReady   <none>          179m   v1.26.2
+
+Their status is `NotReady`. Run ``kubectl get pods -A`` to check.
+
+    NAMESPACE     NAME                                   READY   STATUS    RESTARTS   AGE
+    kube-system   coredns-787d4945fb-5cwlq               0/1     Pending   0          3h8m
+    kube-system   coredns-787d4945fb-q2s4p               0/1     Pending   0          3h8m
+    kube-system   etcd-controlplane                      1/1     Running   0          3h8m
+    kube-system   kube-apiserver-controlplane            1/1     Running   0          3h8m
+    kube-system   kube-controller-manager-controlplane   1/1     Running   0          3h8m
+    kube-system   kube-proxy-7twwr                       1/1     Running   0          3h7m
+    kube-system   kube-proxy-8mxt7                       1/1     Running   0          3h8m
+    kube-system   kube-proxy-v9rc6                       1/1     Running   0          3h8m
+    kube-system   kube-scheduler-controlplane            1/1     Running   0          3h9m
+
+**CoreDNS** (Cluster DNS) is not started up because **pod network add-on** is not installed completely. It must have **CNI** (Container network interface) plugin to run and manage network for cluster.
+
+In this lab, we will use [Weave Net](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) add-on.
+
+Run below command in `kubemaster`
+
+    kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+
+Output:
+
+    serviceaccount/weave-net created
+    clusterrole.rbac.authorization.k8s.io/weave-net created
+    clusterrolebinding.rbac.authorization.k8s.io/weave-net created
+    role.rbac.authorization.k8s.io/weave-net created
+    rolebinding.rbac.authorization.k8s.io/weave-net created
+    daemonset.apps/weave-net created
+
+Open DaemonSet yaml file in kubemaster:
+
+    kubectl edit ds weave-net -n kube-system
+
+Add ``IPALLOC_RANGE`` variable and set value of ``--pod-network-cidr``
+
+    spec:
+    ...
+        template:
+        ...
+            spec:
+            ...
+                containers:
+                ...
+                    env:
+                    - name: IPALLOC_RANGE
+                      value: 10.244.0.0/16
+                      ...
+                    name: weave
+
+Save file then wait a few minutes to reboot.
+
+Check `kubectl get pods -A` and `kubectl get nodes` again for the success result.
 
 </details>
